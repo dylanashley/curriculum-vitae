@@ -20,13 +20,17 @@
 
 \ProvidesClass{cv}[2019-11-03 v1.0 CV class]
 
-\LoadClass[12pt,letterpaper]{article} % Font size and paper type
+\LoadClass[12pt,a4paper]{article} % Font size and paper type
 
 \usepackage[parfill]{parskip} % Remove paragraph indentation
 \usepackage{amsmath} % Required for bold bullet point
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
-\usepackage{times} % set font
+\usepackage{ebgaramond} % Set font to garamond
+\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry} % Set margins to 1 inch
+\addtolength{\textheight}{-\footskip} % Make margins empty
+\usepackage{hyperref} % Required for hyperlinks
+\def\UrlBreaks{\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\,\do\?\do\'\do+\do\=\do\#\do-\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do0\do1\do2\do3\do4\do5\do6\do7\do8\do9} % Fix line breaks in urls
 
 %----------------------------------------------------------------------------------------
 %   HEADINGS COMMANDS: Commands for printing name and address
@@ -110,7 +114,7 @@
 %   LINE FORMATTING
 %----------------------------------------------------------------------------------------
 
-\newcommand{\rLine}[3]{{\bf #1}, #2 \hfill #3}
+\newcommand{\rLine}[3]{{\bf #1}, #2 \hfill #3 \vspace{0.15em}}
 \newcommand{\rPlainLine}[3]{#1, #2 \hfill #3}
 
 %----------------------------------------------------------------------------------------
@@ -119,14 +123,26 @@
 
 \newenvironment{rSubsection}[3]{ % 4 input arguments - title, year, subtitle
   {\bf #1} \hfill {#2}
-  \vspace{0.15em}\\
+  \vspace{0.05em}\\
   {\em #3}
-  \vspace{0.15em}
+  \vspace{0.05em}
   \begin{list}{$\boldsymbol{\cdot}$}{\leftmargin=1.5em \rightmargin=1.5em} % \cdot used for bullets
-  \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
+  \itemsep -0.5em \vspace{-0.6em} % Compress items in list together for aesthetics
   }{
   \end{list}
-  \vspace{0.3em} % Some space after the list of bullet points
+  \vspace{0.0001em} % Some space after the list of bullet points
+}
+
+%----------------------------------------------------------------------------------------
+%   PUBLICATIONS FORMATTING
+%----------------------------------------------------------------------------------------
+
+\newenvironment{rPublications}{ % 4 input arguments - title, year, subtitle
+  \vspace{0.7em}
+  \begin{list}{$\boldsymbol{\cdot}$}{\leftmargin=1.5em \rightmargin=1.5em} % \cdot used for bullets
+  \itemsep 0em \vspace{-0.6em} % Compress items in list together for aesthetics
+  }{
+  \end{list}
 }
 
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
@@ -134,4 +150,4 @@
 \def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
 \def\sectionlineskip{\medskip} % The space above the horizontal line for each section
 \def\nameskip{\bigskip} % The space after your name at the top
-\def\sectionskip{\medskip} % The space after the heading section
+\def\sectionskip{\smallskip} % The space after the heading section
