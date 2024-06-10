@@ -139,7 +139,7 @@
 
 \newenvironment{rPublications}{ % 4 input arguments - title, year, subtitle
   \vspace{0.7em}
-  \begin{list}{$\boldsymbol{\cdot}$}{\leftmargin=1.5em \rightmargin=1.5em} % \cdot used for bullets
+  \begin{list}{}{\leftmargin=1.5em\rightmargin=1.5em\itemindent=-1.5em} % \cdot used for bullets
   \itemsep 0em \vspace{-0.6em} % Compress items in list together for aesthetics
   }{
   \end{list}
