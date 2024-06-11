@@ -27,9 +27,9 @@
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
 \usepackage{ebgaramond} % Set font to garamond
-\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry} % Set margins to 1 inch
-\addtolength{\textheight}{-\footskip} % Make margins empty
-\usepackage{hyperref} % Required for hyperlinks
+\usepackage[left=1in,top=.75in,right=1in,bottom=.75in]{geometry} % Set margins to 1 inch
+\addtolength{\textheight}{-\footskip} % Make margins more empty
+\usepackage[hidelinks]{hyperref} % Required for hyperlinks
 \def\UrlBreaks{\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\,\do\?\do\'\do+\do\=\do\#\do-\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do0\do1\do2\do3\do4\do5\do6\do7\do8\do9} % Fix line breaks in urls
 
 %----------------------------------------------------------------------------------------
@@ -65,14 +65,14 @@
     \centerline{#1}
   \endgroup
   \par
-  \addressskip
+  \smallskip
 }
 
 % \printname is used to print the name as a page header
 \def \printname {
   \begingroup
-    \hfil{\MakeUppercase{\namesize\bf \@name}}\hfil
-    \nameskip\break
+    \hfil{\MakeUppercase{\huge\bf \@name}}\hfil
+    \vspace*{1em}\break
   \endgroup
 }
 
@@ -83,13 +83,15 @@
 \let\ori@document=\document
 \renewcommand{\document}{
   \ori@document  % Begin document
+  \vspace*{1.5em}
   \printname % Print the name specified with \name
   \@ifundefined{@addressone}{}{ % Print the first address if specified
     \printaddress{\@addressone}}
   \@ifundefined{@addresstwo}{}{ % Print the second address if specified
     \printaddress{\@addresstwo}}
-     \@ifundefined{@addressthree}{}{ % Print the third address if specified
+  \@ifundefined{@addressthree}{}{ % Print the third address if specified
     \printaddress{\@addressthree}}
+  \vspace*{0.25em}
 }
 
 %----------------------------------------------------------------------------------------
@@ -98,9 +100,9 @@
 
 % Defines the rSection environment for the large sections within the CV
 \newenvironment{rSection}[1]{ % 1 input argument - section name
-  \sectionskip
+  \smallskip
   \MakeUppercase{\bf #1} % Section title
-  \sectionlineskip
+  \medskip
   \hrule % Horizontal line
   \begin{list}{}{ % List for each individual item in the section
     \setlength{\leftmargin}{0.0em} % Margin within the section
@@ -127,10 +129,10 @@
   {\em #3}
   \vspace{0.05em}
   \begin{list}{$\boldsymbol{\cdot}$}{\leftmargin=1.5em \rightmargin=1.5em} % \cdot used for bullets
-  \itemsep -0.5em \vspace{-0.6em} % Compress items in list together for aesthetics
+  \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
   }{
   \end{list}
-  \vspace{0.0001em} % Some space after the list of bullet points
+  \vspace{0.01em} % Some space after the list of bullet points
 }
 
 %----------------------------------------------------------------------------------------
@@ -138,16 +140,9 @@
 %----------------------------------------------------------------------------------------
 
 \newenvironment{rPublications}{ % 4 input arguments - title, year, subtitle
-  \vspace{0.7em}
+  \vspace{0.75em}
   \begin{list}{}{\leftmargin=1.5em\rightmargin=1.5em\itemindent=-1.5em} % \cdot used for bullets
-  \itemsep 0em \vspace{-0.6em} % Compress items in list together for aesthetics
+  \itemsep 0em \vspace{-0.5em} % Compress items in list together for aesthetics
   }{
   \end{list}
 }
-
-% The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
-\def\namesize{\huge} % Size of the name at the top of the document
-\def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
-\def\sectionlineskip{\medskip} % The space above the horizontal line for each section
-\def\nameskip{\bigskip} % The space after your name at the top
-\def\sectionskip{\smallskip} % The space after the heading section
