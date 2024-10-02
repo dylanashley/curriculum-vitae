@@ -71,6 +71,7 @@
 % \printname is used to print the name as a page header
 \def \printname {
   \begingroup
+    \vspace*{-1em}
     \hfil{\MakeUppercase{\huge\bf \@name}}\hfil
     \vspace*{1em}\break
   \endgroup
@@ -117,7 +118,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\rLine}[3]{{\bf #1}, #2 \hfill #3 \vspace{0.15em}}
-\newcommand{\rPlainLine}[3]{#1, #2 \hfill #3}
+\newcommand{\rPlainLine}[2]{#1 \hfill #2 \vspace{0.15em}}
 
 %----------------------------------------------------------------------------------------
 %   EXPERIENCE FORMATTING
